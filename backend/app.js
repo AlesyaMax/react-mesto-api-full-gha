@@ -9,6 +9,7 @@ const { PORT, DB_URL } = require('./config');
 const { cardRouter, userRouter } = require('./routes/index');
 const { handleErrors } = require('./middlewares/errors');
 const { validateSignin, validateSignup } = require('./middlewares/validation');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 app.use(express.json());
@@ -18,6 +19,7 @@ mongoose.connect(DB_URL, {
 });
 
 app.use(cookieParser());
+app.use(requestLogger);
 
 app.post('/signin', validateSignin, login);
 app.post('/signup', validateSignup, createUser);
@@ -30,6 +32,8 @@ app.use(userRouter);
 app.use('/', (req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
+
+app.use(errorLogger);
 
 app.use(errors());
 
