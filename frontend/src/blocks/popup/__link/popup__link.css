@@ -1,0 +1,13 @@
+.popup__link {
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 15px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.popup__link:hover {
+  opacity: 0.6;
+}

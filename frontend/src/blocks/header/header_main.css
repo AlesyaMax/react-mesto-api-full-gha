@@ -1,0 +1,7 @@
+@media (max-width: 600px) {
+  .header_main {
+    flex-wrap: wrap;
+    align-content: flex-start;
+    min-height: 229px;
+  } 
+}

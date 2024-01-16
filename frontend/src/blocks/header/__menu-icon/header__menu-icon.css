@@ -1,0 +1,13 @@
+.header__menu-icon {
+  margin: auto 30px auto 0;  
+}
+
+.header__menu-icon:hover {
+  opacity: 0.6;
+}
+
+@media (min-width: 600px) {
+  .header__menu-icon {
+  display: none;
+  }
+}

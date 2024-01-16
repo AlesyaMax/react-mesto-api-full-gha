@@ -1,0 +1,15 @@
+.popup__title_auth {
+  padding-left: 0;
+  color: white;
+  text-align: center;
+  align-self: center;
+}
+
+
+@media (max-width: 600px) {
+  .popup__title_auth {
+
+    font-size: 20px;
+
+  }
+}

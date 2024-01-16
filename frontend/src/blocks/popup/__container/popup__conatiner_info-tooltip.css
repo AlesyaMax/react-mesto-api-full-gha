@@ -1,0 +1,11 @@
+.popup__container_info-tooltip {
+  justify-content: center;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .popup__container_info-tooltip {
+    width: 280px;
+    height: 308px; 
+  }
+}
