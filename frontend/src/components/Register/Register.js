@@ -27,7 +27,7 @@ const Register = (props) => {
     <>
       <Header
         headerLink={
-          <NavLink to="/sign-in" className="header__text header__text_link">
+          <NavLink to="/signin" className="header__text header__text_link">
             Войти
           </NavLink>
         }
@@ -37,7 +37,7 @@ const Register = (props) => {
         name="register"
         buttonText="Зарегистрироваться"
         link={
-          <NavLink to="/sign-in" className="popup__link">
+          <NavLink to="/signin" className="popup__link">
             Уже зарегистрированы? Войти
           </NavLink>
         }

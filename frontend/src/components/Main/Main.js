@@ -13,7 +13,7 @@ function Main(props) {
       <Header
         headerLink={
           <NavLink
-            to="/sign-in"
+            to="/signin"
             className="header__text header__text_link"
             onClick={props.onExit}
           >

@@ -27,7 +27,7 @@ const Login = (props) => {
     <>
       <Header
         headerLink={
-          <NavLink to="/sign-up" className="header__text header__text_link">
+          <NavLink to="/signup" className="header__text header__text_link">
             Регистрация
           </NavLink>
         }

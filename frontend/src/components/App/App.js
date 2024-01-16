@@ -147,7 +147,7 @@ function App() {
     setIsInfoTooltipOpen(true);
     setResultText("Вы успешно зарегистрировались!");
     setResultImage(Success);
-    navigate("/sign-in");
+    navigate("/signin");
   }
 
   function handleFailedAuth() {
@@ -265,7 +265,7 @@ function App() {
           }
         />
         <Route
-          path="/sign-in"
+          path="/signin"
           element={
             <Login
               authText={resultText}
@@ -277,7 +277,7 @@ function App() {
           }
         />
         <Route
-          path="/sign-up"
+          path="/signup"
           element={
             <Register
               authText={resultText}
