@@ -45,7 +45,7 @@ export const buttonSubmitAvatar = document.querySelector(
 export const buttonSubmitCard = document.querySelector(".button_submit_card");
 
 export const apiOptions = {
-  baseUrl: "http://localhost:3001",
+  baseUrl: "http://localhost:3000",
   headers: {
     authorization: `Bearer ${localStorage.getItem("token")}`,
     "Content-Type": "application/json",
