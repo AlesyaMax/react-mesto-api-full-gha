@@ -136,6 +136,7 @@ function App() {
         setLoggedIn(true);
         setAuthData(data);
         navigate("/");
+        console.log(`присвоенный токен: ${localStorage.getItem("token")}`)
       })
       .catch((err) => {
         console.log(err);
@@ -237,7 +238,7 @@ function App() {
 
   useEffect(() => {
     auth();
-  }, []);
+  }, [loggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
