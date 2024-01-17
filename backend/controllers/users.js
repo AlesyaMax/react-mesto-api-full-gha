@@ -20,7 +20,7 @@ module.exports.getUsers = async (req, res, next) => {
 module.exports.getUserById = async (req, res, next) => {
   const { userId } = req.params;
   const user = await findUser(req, res, next, userId);
-  return res.send(user);
+  return res.send({ user });
 };
 
 module.exports.createUser = async (req, res, next) => {
@@ -56,14 +56,14 @@ module.exports.createUser = async (req, res, next) => {
 
 module.exports.editUserInfo = async (req, res, next) => {
   const { name, about } = req.body;
-  const updatedUser = await updateUser(req, res, next, { name, about });
-  return res.send(updatedUser);
+  const user = await updateUser(req, res, next, { name, about });
+  return res.send({ user });
 };
 
 module.exports.editAvatar = async (req, res, next) => {
   const { avatar } = req.body;
-  const updatedUser = await updateUser(req, res, next, { avatar });
-  return res.send(updatedUser);
+  const user = await updateUser(req, res, next, { avatar });
+  return res.send({ user });
 };
 
 module.exports.login = async (req, res, next) => {
@@ -77,10 +77,9 @@ module.exports.login = async (req, res, next) => {
       throw new AuthError('Неправильные почта или пароль');
     }
     const token = generateToken({ email: user.email, _id: user._id });
-    return res
-      .status(200)
-      .cookie('jwt', token, { maxAge: 3600000 * 24 * 7, httpOnly: true })
-      .send({ data: { email: user.email, _id: user._id } });
+    return res.status(200).send({ token });
+    // .cookie('jwt', token, { maxAge: 3600000 * 24 * 7, httpOnly: true })
+    // .send({ data: { email: user.email, _id: user._id } });
   } catch (error) {
     next(error);
   }
@@ -89,7 +88,7 @@ module.exports.login = async (req, res, next) => {
 module.exports.getUser = async (req, res, next) => {
   const { _id } = req.user;
   const user = await findUser(req, res, next, _id);
-  return res.send(user);
+  return res.send({ user });
 };
 
 // Ниже функция удаления пользователя для доп. проверок, не требуется в проектной работе

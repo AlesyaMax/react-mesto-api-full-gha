@@ -1,4 +1,4 @@
-import { apiAuthOptions } from "../utils/constants.js";
+import { apiOptions } from "../utils/constants.js";
 
 class ApiAuth {
   constructor(options) {
@@ -42,6 +42,6 @@ class ApiAuth {
   }
 }
 
-const apiAuth = new ApiAuth(apiAuthOptions);
+const apiAuth = new ApiAuth(apiOptions);
 
 export default apiAuth;

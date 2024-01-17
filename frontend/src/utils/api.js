@@ -16,7 +16,7 @@ class Api {
   }
 
   getUserInfo() {
-    return this._getRequest(`https://nomoreparties.co/v1/cohort-76/users/me`, {
+    return this._getRequest(`${this._url}/users/me`, {
       method: "GET",
       headers: this._headers,
     });

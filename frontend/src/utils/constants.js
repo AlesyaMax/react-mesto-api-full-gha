@@ -45,16 +45,9 @@ export const buttonSubmitAvatar = document.querySelector(
 export const buttonSubmitCard = document.querySelector(".button_submit_card");
 
 export const apiOptions = {
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-76",
+  baseUrl: "http://localhost:3001",
   headers: {
-    authorization: "57922637-f12b-401e-b895-d561849d86af",
-    "Content-Type": "application/json",
-  },
-};
-
-export const apiAuthOptions = {
-  baseUrl: "https://auth.nomoreparties.co",
-  headers: {
+    authorization: `Bearer ${localStorage.getItem("token")}`,
     "Content-Type": "application/json",
   },
 };

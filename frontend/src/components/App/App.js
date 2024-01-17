@@ -68,7 +68,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i._id === currentUser._id || i === currentUser._id);
     api
       .changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
@@ -96,7 +96,7 @@ function App() {
     api
       .editUserInfo(userInfo)
       .then((newUserInfo) => {
-        setCurrentUser(newUserInfo);
+        setCurrentUser(newUserInfo.user);
         closeAllPopups();
       })
       .catch((err) => {
@@ -108,7 +108,7 @@ function App() {
     api
       .editAvatar(avatarLink)
       .then((newUserInfo) => {
-        setCurrentUser(newUserInfo);
+        setCurrentUser(newUserInfo.user);
         closeAllPopups();
       })
       .catch((err) => {
@@ -182,7 +182,7 @@ function App() {
       apiAuth
         .checkAuth(jwt)
         .then((res) => {
-          setAuthData(res.data);
+          setAuthData(res.user);
           setLoggedIn(true);
           navigate("/", { replace: true });
         })
@@ -227,7 +227,7 @@ function App() {
       api
         .getUserInfo()
         .then((userData) => {
-          setCurrentUser(userData);
+          setCurrentUser(userData.user);
         })
         .catch((err) => {
           console.log(err);
