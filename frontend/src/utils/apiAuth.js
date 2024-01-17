@@ -26,7 +26,7 @@ class ApiAuth {
   authorization(data) {
     return this._getRequest(`${this._url}/signin`, {
       method: "POST",
-      headers: this._headers,
+      headers: {"Content-Type": "application/json"},
       body: JSON.stringify(data),
     });
   }
