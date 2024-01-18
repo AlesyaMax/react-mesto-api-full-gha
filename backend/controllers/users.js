@@ -19,8 +19,7 @@ module.exports.getUsers = async (req, res, next) => {
 
 module.exports.getUserById = async (req, res, next) => {
   const { userId } = req.params;
-  const user = await findUser(req, res, next, userId);
-  return res.send({ user });
+  return findUser(req, res, next, userId);
 };
 
 module.exports.createUser = async (req, res, next) => {
@@ -56,14 +55,12 @@ module.exports.createUser = async (req, res, next) => {
 
 module.exports.editUserInfo = async (req, res, next) => {
   const { name, about } = req.body;
-  const user = await updateUser(req, res, next, { name, about });
-  return res.send({ user });
+  return updateUser(req, res, next, { name, about });
 };
 
 module.exports.editAvatar = async (req, res, next) => {
   const { avatar } = req.body;
-  const user = await updateUser(req, res, next, { avatar });
-  return res.send({ user });
+  return updateUser(req, res, next, { avatar });
 };
 
 module.exports.login = async (req, res, next) => {
@@ -94,8 +91,7 @@ module.exports.login = async (req, res, next) => {
 
 module.exports.getUser = async (req, res, next) => {
   const { _id } = req.user;
-  const user = await findUser(req, res, next, _id);
-  return res.send({ user });
+  return findUser(req, res, next, _id);
 };
 
 // Ниже функция удаления пользователя для доп. проверок, не требуется в проектной работе

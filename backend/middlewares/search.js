@@ -9,7 +9,7 @@ async function findUser(req, res, next, id) {
     const user = await User.findById(id).orFail(
       () => new NotFoundError('Пользователь с указанным _id не найден'),
     );
-    return user;
+    return res.status(200).send({ user });
   } catch (error) {
     next(error);
   }
@@ -23,7 +23,7 @@ async function updateUser(req, res, next, data) {
     }).orFail(
       () => new NotFoundError('Пользователь с указанным _id не найден'),
     );
-    return updatedUser;
+    return res.status(200).send({ updatedUser });
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
       return next(
