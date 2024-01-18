@@ -77,9 +77,17 @@ module.exports.login = async (req, res, next) => {
       throw new AuthError('Неправильные почта или пароль');
     }
     const token = generateToken({ email: user.email, _id: user._id });
-    return res.status(200).send({ token });
-    // .cookie('jwt', token, { maxAge: 3600000 * 24 * 7, httpOnly: true })
-    // .send({ data: { email: user.email, _id: user._id } });
+    return (
+      res
+        .status(200)
+        // .send({ token });
+        .cookie('jwt', token, {
+          maxAge: 3600000 * 24 * 7,
+          httpOnly: true,
+          sameSite: 'strict',
+        })
+        .send({ email: user.email, _id: user._id })
+    );
   } catch (error) {
     next(error);
   }

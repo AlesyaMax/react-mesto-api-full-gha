@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const NotFoundError = require('./utils/NotFoundError');
@@ -15,20 +16,32 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const app = express();
 app.use(express.json());
 
-app.use((req, res, next) => {
-  const { method } = req;
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  const requestHeaders = req.headers['access-control-request-headers'];
-  res.header('Access-Control-Allow-Origin', '*');
+app.use(
+  cors({
+    origin: [
+      'http://localhost:3001',
+      'https://localhost:3001',
+      'http://mesto.am.nomoredomainsmonster.ru',
+      'https://mesto.am.nomoredomainsmonster.ru',
+    ],
+    credentials: true,
+  }),
+);
 
-  if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.header('Access-Control-Allow-Headers', requestHeaders);
-    res.end();
-  }
+// app.use((req, res, next) => {
+//   const { method } = req;
+//   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+//   const requestHeaders = req.headers['access-control-request-headers'];
+//   res.header('Access-Control-Allow-Origin', '*');
 
-  next();
-});
+//   if (method === 'OPTIONS') {
+//     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+//     res.header('Access-Control-Allow-Headers', requestHeaders);
+//     res.end();
+//   }
+
+//   next();
+// });
 
 mongoose.connect(DB_URL, {
   useNewUrlParser: true,

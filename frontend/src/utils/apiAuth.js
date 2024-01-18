@@ -26,6 +26,7 @@ class ApiAuth {
   authorization(data) {
     return this._getRequest(`${this._url}/signin`, {
       method: "POST",
+      credentials: "include",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(data),
     });
@@ -34,9 +35,10 @@ class ApiAuth {
   checkAuth(token) {
     return this._getRequest(`${this._url}/users/me`, {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
       },
     });
   }

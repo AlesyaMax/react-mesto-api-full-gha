@@ -18,6 +18,7 @@ class Api {
   getUserInfo() {
     return this._getRequest(`${this._url}/users/me`, {
       method: "GET",
+      credentials: "include",
       headers: this._headers,
     });
   }
@@ -25,6 +26,7 @@ class Api {
   getCards() {
     return this._getRequest(`${this._url}/cards`, {
       method: "GET",
+      credentials: "include",
       headers: this._headers,
     });
   }
@@ -32,6 +34,7 @@ class Api {
   editUserInfo(data) {
     return this._getRequest(`${this._url}/users/me`, {
       method: "PATCH",
+      credentials: "include",
       headers: this._headers,
       body: JSON.stringify(data),
     });
@@ -40,6 +43,7 @@ class Api {
   addNewCard(data) {
     return this._getRequest(`${this._url}/cards`, {
       method: "POST",
+      credentials: "include",
       headers: this._headers,
       body: JSON.stringify(data),
     });
@@ -56,6 +60,7 @@ class Api {
   addLike(id) {
     return this._getRequest(`${this._url}/cards/${id}/likes`, {
       method: "PUT",
+      credentials: "include",
       headers: this._headers,
     });
   }
@@ -63,6 +68,7 @@ class Api {
   removeLike(id) {
     return this._getRequest(`${this._url}/cards/${id}/likes`, {
       method: "DELETE",
+      credentials: "include",
       headers: this._headers,
     });
   }
@@ -70,6 +76,7 @@ class Api {
   deleteCard(id) {
     return this._getRequest(`${this._url}/cards/${id}`, {
       method: "DELETE",
+      credentials: "include",
       headers: this._headers,
     });
   }
@@ -77,6 +84,7 @@ class Api {
   editAvatar(data) {
     return this._getRequest(`${this._url}/users/me/avatar`, {
       method: "PATCH",
+      credentials: "include",
       headers: this._headers,
       body: JSON.stringify(data),
     });

@@ -132,11 +132,10 @@ function App() {
     apiAuth
       .authorization(data)
       .then((res) => {
-        localStorage.setItem("token", res.token);
+        localStorage.setItem("userId", res._id);
         setLoggedIn(true);
         setAuthData(data);
         navigate("/");
-        console.log(`присвоенный токен: ${localStorage.getItem("token")}`)
       })
       .catch((err) => {
         console.log(err);
@@ -174,11 +173,11 @@ function App() {
     setLoggedIn(false);
     setAuthData({});
     handleMenuClose();
-    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
   }
 
   function auth() {
-    const jwt = localStorage.getItem("token");
+    const jwt = localStorage.getItem("userId");
     if (jwt) {
       apiAuth
         .checkAuth(jwt)
