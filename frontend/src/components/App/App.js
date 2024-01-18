@@ -237,7 +237,7 @@ function App() {
 
   useEffect(() => {
     auth();
-  }, [loggedIn]);
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
