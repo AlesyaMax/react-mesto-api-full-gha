@@ -160,7 +160,7 @@ function App() {
     apiAuth
       .register(data)
       .then((res) => {
-        setAuthData(res.data);
+        setAuthData(res);
         handleSuccessfulAuth();
       })
       .catch((err) => {
@@ -237,7 +237,7 @@ function App() {
 
   useEffect(() => {
     auth();
-  }, []);
+  }, [loggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
