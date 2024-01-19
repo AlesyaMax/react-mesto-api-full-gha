@@ -76,7 +76,6 @@ module.exports.login = async (req, res, next) => {
     const token = generateToken({ email: user.email, _id: user._id });
     return (
       res
-        .status(200)
         // .send({ token });
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,

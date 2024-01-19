@@ -37,7 +37,7 @@ module.exports.deleteCard = async (req, res, next) => {
       throw new AccessError('Нет прав на удаление карточки');
     } else {
       await cardToDelete.deleteOne();
-      return res.status(200).send({
+      return res.send({
         message: `Карточка ${cardToDelete._id} успешно удалена`,
       });
     }

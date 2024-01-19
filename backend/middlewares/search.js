@@ -9,7 +9,7 @@ async function findUser(req, res, next, id) {
     const user = await User.findById(id).orFail(
       () => new NotFoundError('Пользователь с указанным _id не найден'),
     );
-    return res.status(200).send({ user });
+    return res.send({ user });
   } catch (error) {
     next(error);
   }
@@ -23,7 +23,7 @@ async function updateUser(req, res, next, data) {
     }).orFail(
       () => new NotFoundError('Пользователь с указанным _id не найден'),
     );
-    return res.status(200).send({ updatedUser });
+    return res.send({ updatedUser });
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
       return next(
@@ -41,7 +41,7 @@ async function updateCard(req, res, next, newData) {
     })
       .populate('likes')
       .orFail(() => new NotFoundError('Передан несуществующий _id карточки'));
-    return res.status(200).send(card);
+    return res.send(card);
   } catch (error) {
     next(error);
   }
