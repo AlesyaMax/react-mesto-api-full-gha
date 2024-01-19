@@ -169,11 +169,23 @@ function App() {
       });
   }
 
+  function signOut() {
+    navigate("/signout", {replace: true});
+    api.signOut()
+    .then(() => {
+      navigate("/signin", {replace: true})
+    })
+    .catch((err) => {
+      console.log(err)
+    });
+  }
+
   function handleExit() {
     setLoggedIn(false);
     setAuthData({});
     handleMenuClose();
     localStorage.removeItem("userId");
+    signOut();
   }
 
   function auth() {
@@ -288,6 +300,7 @@ function App() {
             />
           }
         />
+        <Route path="/signout" element={<PageNotFound />} loggedIn={loggedIn} />
         <Route path="*" element={<PageNotFound />} loggedIn={loggedIn} />
       </Routes>
 

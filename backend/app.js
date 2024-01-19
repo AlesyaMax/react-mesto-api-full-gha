@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const { login, createUser } = require('./controllers/users');
+const { login, createUser, clearCookie } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const NotFoundError = require('./utils/NotFoundError');
 const { PORT, DB_URL } = require('./config');
@@ -30,21 +30,6 @@ app.use(
   }),
 );
 
-// app.use((req, res, next) => {
-//   const { method } = req;
-//   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-//   const requestHeaders = req.headers['access-control-request-headers'];
-//   res.header('Access-Control-Allow-Origin', '*');
-
-//   if (method === 'OPTIONS') {
-//     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-//     res.header('Access-Control-Allow-Headers', requestHeaders);
-//     res.end();
-//   }
-
-//   next();
-// });
-
 mongoose.connect(DB_URL, {
   useNewUrlParser: true,
 });
@@ -62,6 +47,8 @@ app.post('/signin', validateSignin, login);
 app.post('/signup', validateSignup, createUser);
 
 app.use(auth);
+
+app.get('/signout', clearCookie);
 
 app.use(cardRouter);
 app.use(userRouter);

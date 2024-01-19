@@ -93,6 +93,8 @@ module.exports.getUser = async (req, res, next) => {
   return findUser(req, res, next, _id);
 };
 
+module.exports.clearCookie = (req, res) => res.clearCookie('jwt').send({ message: 'Выход' });
+
 // Ниже функция удаления пользователя для доп. проверок, не требуется в проектной работе
 
 // module.exports.deleteUserById = async (req, res, next) => {

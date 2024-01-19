@@ -89,6 +89,14 @@ class Api {
       body: JSON.stringify(data),
     });
   }
+
+  signOut() {
+    return this._getRequest(`${this._url}/signout`, {
+      method: "GET",
+      credentials: "include",
+      headers: this._headers,
+    })
+  }
 }
 
 const api = new Api(apiOptions);
