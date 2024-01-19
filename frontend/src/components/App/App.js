@@ -96,7 +96,7 @@ function App() {
     api
       .editUserInfo(userInfo)
       .then((newUserInfo) => {
-        setCurrentUser(newUserInfo.user);
+        setCurrentUser(newUserInfo.updatedUser);
         closeAllPopups();
       })
       .catch((err) => {
@@ -108,7 +108,7 @@ function App() {
     api
       .editAvatar(avatarLink)
       .then((newUserInfo) => {
-        setCurrentUser(newUserInfo.user);
+        setCurrentUser(newUserInfo.updatedUser);
         closeAllPopups();
       })
       .catch((err) => {
